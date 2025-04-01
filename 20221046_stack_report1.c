@@ -3,7 +3,7 @@ int main() {
 	initStack(&s);
 	char t[MAX];
 	printf("문자열을 입력하세요: ");
-	gets(t);
+	gets_s(t,MAX);
 
 	for (int i = 0; t[i] != '\0'; i++) {
 		push(&s, t[i]);
