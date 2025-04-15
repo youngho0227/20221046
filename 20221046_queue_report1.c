@@ -25,7 +25,7 @@ bool isFull(LinearQueue* q) {
 
 bool enqueue(LinearQueue* q, int value) {
 	if (isFull(q)) {
-		printf("Å¥°¡ °¡µæ Ã¡½À´Ï´Ù.\n");
+		printf("íê°€ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤.\n");
 		return false;
 	}
 	q->rear++;
@@ -35,13 +35,13 @@ bool enqueue(LinearQueue* q, int value) {
 
 int dequeue(LinearQueue* q) {
 	if (isEmpty(q)) {
-		printf("Å¥°¡ ºñ¾î ÀÖ½À´Ï´Ù.\n");
+		printf("íê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.\n");
 		return -1;
 	}
 	int value = q->data[q->front];
 	q->front++;
 	if (isEmpty(q)) {
-		initQueue(q);		// Å¥°¡ ºñ¾îÀÖÀ¸¸é ÃÊ±âÈ­
+		initQueue(q);		// íê°€ ë¹„ì–´ìˆìœ¼ë©´ ì´ˆê¸°í™”
 	}
 	return value;
 }
@@ -50,25 +50,28 @@ void menu(int num,LinearQueue*q) {
 	int value;
 	switch (num) {
 	case 1:
-		printf("Å¥¿¡ »ğÀÔÇÒ °ªÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+		printf("íì— ì‚½ì…í•  ê°’ì„ ì…ë ¥í•˜ì„¸ìš”: ");
 		scanf_s("%d", &value);
 		enqueue(q, value);
 		break;
 	case 2:
-		printf("Dequeue: %d\n", dequeue(q));
+		value = dequeue(q);
+		if(value != -1) {
+			printf("Dequeue: %d\n", dequeue(q));
+		}
 		break;
 	case 3:
-		printf("Å¥ µ¥ÀÌÅÍ: ");
+		printf("í ë°ì´í„°: ");
 		for (int i = q->front; i <= q->rear; i++) {
 			printf("%d ", q->data[i]);
 		}
 		printf("\n");
 		break;
 	case 4:
-		printf("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.\n");
+		printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
 		break;
 	default:
-		printf("Àß¸øµÈ ¹øÈ£ÀÔ´Ï´Ù.\n");
+		printf("ì˜ëª»ëœ ë²ˆí˜¸ì…ë‹ˆë‹¤.\n");
 		break;
 	}
 }
@@ -78,11 +81,11 @@ int main() {
 	initQueue(&q);
 	int num;
 	do {
-		printf("Å¥ ¸Ş´º\n");
-		printf("1. »ğÀÔ\n");
-		printf("2. »èÁ¦\n");
-		printf("3. Å¥ µ¥ÀÌÅÍ Ãâ·Â\n");
-		printf("4. Á¾·á\n");
+		printf("í ë©”ë‰´\n");
+		printf("1. ì‚½ì…\n");
+		printf("2. ì‚­ì œ\n");
+		printf("3. í ë°ì´í„° ì¶œë ¥\n");
+		printf("4. ì¢…ë£Œ\n");
 		scanf_s("%d", &num);
 		system("cls");
 		menu(num,&q);
